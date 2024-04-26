@@ -94,7 +94,7 @@ const Login = () => {
       </div>
       <div className="flex md:flex-row flex-col justify-center items-center space-x-16 w-full h-full pb-3">
         <img
-          src="../src/assets/loginPic.svg"
+          src="/src/assets/loginPic.svg"
           alt="loginPic"
           // className="w-[55.75rem] h-[58.625rem]"
           className="w-full md:w-1/3 max-h-[58.625rem] select-none"
@@ -134,11 +134,7 @@ const Login = () => {
             }}
             className="bg-orange hover:bg-orange-hover rounded-3xl w-9/12 flex justify-center items-center py-2.5 space-x-5 cursor-pointer select-none"
           >
-            <img
-              src="../src/assets/googleIcon.svg"
-              alt=""
-              className="w-6 h-6"
-            />
+            <img src="/src/assets/googleIcon.svg" alt="" className="w-6 h-6" />
             <span className="text-white text-header-4 font-bold">
               Log in with google
             </span>
