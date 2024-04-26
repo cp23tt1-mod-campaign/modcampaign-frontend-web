@@ -13,8 +13,7 @@ const Login = () => {
   const navigate = useNavigate();
 
   // const [count, setCount] = useState(0);
-  // 909091026524-m87vt3626s41gs0b4k65k909h4qf36g5.apps.googleusercontent.com
-  // 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
+
   const googleSignIn = useGoogleLogin({
     onSuccess: (tokenResponse) =>
       handleGoogleSignIn(tokenResponse.access_token),
