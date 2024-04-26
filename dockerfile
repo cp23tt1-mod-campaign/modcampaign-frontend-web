@@ -7,5 +7,5 @@ RUN npm run build
 
 FROM nginx:stable-alpine as production-stage
 
-COPY --from=build //modcampaign-frontend-web/dist /usr/share/nginx/html
+COPY --from=build /modcampaign-frontend-web/dist /usr/share/nginx/html
 EXPOSE 3000
