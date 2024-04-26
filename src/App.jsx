@@ -33,7 +33,7 @@ function App() {
         element: <Login />,
       },
     ],
-    { basename: "/tt1" }
+    { basename: "/tt1/" }
   );
   return (
     // <>
