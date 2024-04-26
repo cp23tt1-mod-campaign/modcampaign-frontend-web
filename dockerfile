@@ -1,12 +1,11 @@
 FROM node:lts-alpine AS build
-WORKDIR /modcampaign
+WORKDIR /modcampaign-frontend-web
 COPY package*.json ./
 RUN npm install
 COPY . .
-# RUN npm run build
-RUN npm run generate
+RUN npm run build
 
 FROM nginx:stable-alpine as production-stage
-# COPY --from=build /asap-frontend/.nuxt/dist /usr/share/nginx/html
-COPY --from=build /asap-frontend/.output/public /usr/share/nginx/html
+
+COPY --from=build //modcampaign-frontend-web/dist /usr/share/nginx/html
 EXPOSE 3000
