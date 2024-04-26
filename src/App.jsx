@@ -16,23 +16,25 @@ import Home from "./pages/Home";
 import Login from "./pages/Login";
 import PrivateRoutes from "./utils/PrivateRoutes";
 import NotFound from "./pages/NotFound";
-
 function App() {
-  const route = createBrowserRouter([
-    {
-      path: "/",
-      element: (
-        <PrivateRoutes>
-          <Home />
-        </PrivateRoutes>
-      ),
-      ErrorBoundary: () => <NotFound />,
-    },
-    {
-      path: "/login",
-      element: <Login />,
-    },
-  ]);
+  const route = createBrowserRouter(
+    [
+      {
+        path: "/",
+        element: (
+          <PrivateRoutes>
+            <Home />
+          </PrivateRoutes>
+        ),
+        ErrorBoundary: () => <NotFound />,
+      },
+      {
+        path: "/login",
+        element: <Login />,
+      },
+    ],
+    { basename: "/tt1" }
+  );
   return (
     // <>
     <div className="App">
