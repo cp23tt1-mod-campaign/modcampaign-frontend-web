@@ -41,16 +41,10 @@ const Home = () => {
     getUserList();
   }, [dispatch]);
   const getPageDisplay = () => {
-    console.log(pagination);
-    // const currentPage = 1;
-    // const pageNum = 4;
     const currentPage = pagination.currentPage;
     const pageNum = pagination.totalPages;
     const pageList = [];
     if (pageNum < 11 || pageNum <= 4) {
-      // if (pageNum === 1) {
-      //   pageList.push({ page: 1, display: 1 });
-      // } else {
       for (let i = 1; i <= pageNum; i++) {
         pageList.push({ page: i, display: i });
       }
