@@ -5,15 +5,19 @@ import "aos/dist/aos.css";
 import { useEffect } from "react";
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
-import googleIcon from "../assets/googleIcon.svg";
-import loginPic from "../assets/loginPic.svg";
-
+import assets from "../utils/assets";
+import { useDispatch } from "react-redux";
+import {
+  setUserDisplayName,
+  setUserProfileImage,
+  setUserRole,
+} from "../store/user/userSlice";
 const Login = () => {
   useEffect(() => {
     Aos.init();
   }, []);
   const navigate = useNavigate();
-
+  const dispatch = useDispatch();
   // const [count, setCount] = useState(0);
 
   const googleSignIn = useGoogleLogin({
@@ -51,15 +55,16 @@ const Login = () => {
             timer: 2000,
           });
           const userData = responseAPI.data.data.data;
+          // console.log(userData);
+          // console.log(userData.accessToken);
+          // console.log(userData.role);
+          // console.log(userData.displayName);
+          // console.log(userData.profileImage);
           localStorage.setItem("accessToken", userData.accessToken);
-          console.log(userData);
-          console.log(userData.accessToken);
-          console.log(userData.role);
-          console.log(userData.displayName);
-          console.log(userData.profileImage);
-          // https://lh3.googleusercontent.com/a/${userProfile?.profileImage}
+          dispatch(setUserDisplayName(userData.displayName));
+          dispatch(setUserRole(userData.role));
+          dispatch(setUserProfileImage(userData.profileImage));
           navigate("/");
-          // window.location.href = "/dashboard";
         } else {
           Swal.fire({
             icon: "error",
@@ -96,7 +101,7 @@ const Login = () => {
       </div>
       <div className="flex md:flex-row flex-col justify-center items-center space-x-16 w-full h-full pb-3">
         <img
-          src={loginPic}
+          src={assets.loginPic}
           alt="loginPic"
           // className="w-[55.75rem] h-[58.625rem]"
           className="w-full md:w-1/3 max-h-[58.625rem] select-none"
@@ -105,19 +110,19 @@ const Login = () => {
           data-aos-duration="800"
         />
         <div
-          className="flex flex-col justify-center w-full md:w-1/3 h-full px-10 md:px-0 space-y-16"
+          className="flex flex-col justify-center w-full md:w-1/3 h-full space-y-16"
           data-aos="fade-left"
           // data-aos-offset="1000"
           data-aos-duration="1200"
         >
           <div className="w-full flex flex-col space-y-3">
-            <span className="text-black font-bold text-[2.5rem]">
+            <span className="text-black text-wrap font-bold text-super-header-2">
               Welcome to
             </span>
-            <span className="text-orange font-bold text-[3.5rem]">
+            <span className="text-orange text-wrap font-bold text-super-header-1">
               ModCampaign
             </span>
-            <span className="text-orange font-bold text-[3.5rem]">
+            <span className="text-orange text-wrap font-bold text-super-header-1">
               User Management
             </span>
             <span className="text-gray text-header-4 font-semibold">
@@ -134,9 +139,9 @@ const Login = () => {
                 googleSignIn();
               }
             }}
-            className="bg-orange hover:bg-orange-hover rounded-3xl w-9/12 flex justify-center items-center py-2.5 space-x-5 cursor-pointer select-none"
+            className="bg-orange hover:bg-orange-hover rounded-3xl w-full md:w-9/12 flex justify-center items-center py-2.5 space-x-5 cursor-pointer select-none"
           >
-            <img src={googleIcon} alt="googleIcon" className="w-6 h-6" />
+            <img src={assets.googleIcon} alt="googleIcon" className="w-6 h-6" />
             <span className="text-white text-header-4 font-bold">
               Log in with google
             </span>

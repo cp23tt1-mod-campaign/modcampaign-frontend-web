@@ -10,6 +10,8 @@ module.exports = {
     //   // serif: ["Merriweather", "serif"],
     // },
     fontSize: {
+      "super-header-1": "56px",
+      "super-header-2": "40px",
       "header-1": "32px",
       "header-2": "24px",
       "header-3": "20px",
@@ -38,12 +40,14 @@ module.exports = {
         green: "#05AB58",
         blue: "#0274FE",
         black: "#000000",
+        "black-2": "#404040",
         // 'black-2': rgba(0, 0, 0, 0.5),
         gray: "#929292",
         white: "#FFFFFF",
         bg: "#F5F5F5",
         "gray-2": "#ECECEC",
         "gray-3": "#D9D9D9",
+        "gray-4": "#DFDFDF",
         // 'hover-primary': '#E35F30',
         // 'disable-primary': '#F9CEC0',
         // secondary: 'white',
@@ -79,5 +83,6 @@ module.exports = {
       // },
     },
   },
+  // eslint-disable-next-line no-undef
   plugins: [],
 };
