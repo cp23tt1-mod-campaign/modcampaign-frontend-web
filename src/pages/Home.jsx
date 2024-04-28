@@ -113,8 +113,8 @@ const Home = () => {
   const signOut = async () => {
     const res = await Swal.fire({
       icon: "warning",
-      title: `${"headerText" || "Warning"}`,
-      text: "bodyText",
+      title: `Are you sure to sign out?`,
+      text: "You will be redirected to the login page.",
       imageWidth: "128px",
       imageHeight: "128px",
       imageAlt: "warning",
@@ -122,7 +122,8 @@ const Home = () => {
       reverseButtons: true,
       showCancelButton: true,
       showConfirmButton: true,
-      confirmButtonText: "รับทราบ",
+      confirmButtonText: "Accept",
+      cancelButtonText: "Decline",
       allowOutsideClick: false,
     });
     if (res.isConfirmed) {
@@ -244,7 +245,7 @@ const Home = () => {
           </div>
         </div>
         <div className="w-full h-full relative flex flex-col">
-          <div className="w-full h-full px-5 py-10 flex flex-col space-y-6">
+          <div className="w-full h-[46.875rem] px-5 py-10 flex flex-col space-y-6">
             <span className="text-black text-header-2 font-bold">
               User Management
             </span>
