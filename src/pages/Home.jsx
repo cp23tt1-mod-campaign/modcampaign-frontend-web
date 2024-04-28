@@ -362,8 +362,7 @@ const Home = () => {
           </div>
           <div className="absolute bottom-0 w-full p-4 bg-white opacity-80 border-t-2 border-gray-4 flex justify-between items-center">
             <span className="text-gray text-body-1 font-regular">
-              Showing {pagination.offset + 1} to{" "}
-              {userState.userList[userState.userList.length - 1].num} of{" "}
+              Showing {pagination.offset + 1} to {pagination.lastNum} of{" "}
               {pagination.totalCount} entries
             </span>
             <div className="flex flex-row items-center space-x-7">
