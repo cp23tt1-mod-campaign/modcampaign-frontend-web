@@ -29,7 +29,6 @@ const Home = () => {
         },
       });
       if (res.status === 200) {
-        console.log(res.data.data);
         dispatch(setUserList(res.data.data.users));
         dispatch(setPagination(res.data.data.pagination));
         return res;
@@ -97,7 +96,6 @@ const Home = () => {
         pageList.push({ page: pageNum, display: pageNum });
       }
     }
-    console.log(pageList);
     return pageList;
   };
   const changeUserRole = async (userId, role) => {
@@ -114,9 +112,6 @@ const Home = () => {
         }
       );
       return res;
-      // if (res.status === 200) {
-      //   dispatch(setUserList(res.data.data));
-      // }
     } catch (error) {
       console.log(error.response);
     }
@@ -188,9 +183,7 @@ const Home = () => {
           console.log(error.response);
         }
       }
-      // console.log(res);
     }
-    // console.log(data);
   };
   // dispatch({type: "user/setUser", payload: "Jirasin"});
   const filteredUserList = userState.userList.filter((user) => {
@@ -391,22 +384,8 @@ const Home = () => {
                     }
 
                     typing = await setTimeout(async () => {
-                      // console.log("typing");
-
                       await getUserList(pagination.currentPage, e.target.value);
                     }, 1000);
-
-                    // if (e.target.value === '') {
-                    //   await dispatch(
-                    //       setPagination({ ...pagination, pageSize: 10 })
-                    //     );
-                    // }
-
-                    // if (resGetUser.status === 200) {
-                    //   dispatch(setUserList(resGetUser.data.data.users));
-                    //   dispatch(setPagination(resGetUser.data.data.pagination));
-                    // }
-                    console.log(e.target.value);
                   }}
                 />
               </div>
@@ -426,8 +405,6 @@ const Home = () => {
                       pagination.currentPage - 1,
                       pagination.pageSize
                     );
-                    // console.log("prev");
-                    // handleChangePage(currentPage - 1)
                   }}
                   className={`${
                     pagination.currentPage === 1
@@ -465,25 +442,21 @@ const Home = () => {
                   );
                 })}
                 <div
-                  onClick={
-                    async () => {
-                      if (pagination.currentPage === pagination.totalPages) {
-                        return;
-                      }
-                      dispatch(
-                        setPagination({
-                          ...pagination,
-                          currentPage: pagination.currentPage + 1,
-                        })
-                      );
-                      await getUserList(
-                        pagination.currentPage + 1,
-                        pagination.pageSize
-                      );
-                      // console.log("next");
+                  onClick={async () => {
+                    if (pagination.currentPage === pagination.totalPages) {
+                      return;
                     }
-                    // handleChangePage(currentPage + 1)}
-                  }
+                    dispatch(
+                      setPagination({
+                        ...pagination,
+                        currentPage: pagination.currentPage + 1,
+                      })
+                    );
+                    await getUserList(
+                      pagination.currentPage + 1,
+                      pagination.pageSize
+                    );
+                  }}
                   className={`${
                     pagination.currentPage === pagination.totalPages
                       ? "cursor-not-allowed"
