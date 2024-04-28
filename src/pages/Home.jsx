@@ -257,6 +257,7 @@ const Home = () => {
                 type="text"
                 placeholder="Search"
                 className="outline-none flex-1 mr-2 placeholder:text-black-2 w-full"
+                value={searchText}
                 onChange={(e) => setSearchText(e.target.value)}
               />
               <span
